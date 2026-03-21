@@ -7,14 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build Docker image
-        run: docker build -t constellation-25 .
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Push to DockerHub
+      - name: Build and push to GHCR
         run: |
-          docker tag constellation-25 faceprintpay/constellation-25:latest
-          docker push faceprintpay/constellation-25:latest
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker build -t ghcr.io/faceprintpay/constellation-25:latest .
+          docker push ghcr.io/faceprintpay/constellation-25:latest
