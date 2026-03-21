@@ -2,13 +2,17 @@ name: Build C25 Docker Image
 on:
   push:
     branches: [master]
+permissions:
+  contents: read
+  packages: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Build and push to GHCR
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker build -t ghcr.io/faceprintpay/constellation-25:latest .
-          docker push ghcr.io/faceprintpay/constellation-25:latest
+      - uses: actions/checkout@v4
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Build Docker image
+        run: docker build -t ghcr.io/faceprintpay/constellation-25:latest .
+      - name: Push Docker image
+        run: docker push ghcr.io/faceprintpay/constellation-25:latest
