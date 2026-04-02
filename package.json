@@ -1,0 +1,13 @@
+{
+  "name": "constellation-25",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo \"server ready\""
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^4.18.0",
+    "ws": "^8.19.0"
+  }
+}
