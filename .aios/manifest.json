@@ -1,0 +1,17 @@
+{
+  "project": "Constellation25",
+  "tagline": "Multi-agent platform",
+  "ai_os": true,
+  "layers": {
+    "ui": ["TypeScript", "HTML", "CSS"],
+    "orchestration": ["Python", "Agent loops", "Memory", "Model routing"],
+    "system_engine": ["C++", "Rust", "Vector DB", "LLM runtime"],
+    "kernel_core": ["C", "Assembly", "HAL", "MMU"]
+  },
+  "agents": [
+    "Earth structure",
+    "Mars security",
+    "Pallas CI/CD",
+    "Nyx ML"
+  ]
+}
